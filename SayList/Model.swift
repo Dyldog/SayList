@@ -28,14 +28,14 @@ struct Album {
 struct Song {
     let id: String
     let title: String
-    let artist: Artist
-    let album: Album
 }
 
 struct Playlist {
     let id: String
     let title: String
     let songCount: Int
+    let url: URL
+    let songs: [Song]
 //    let members: [User]
 //    let songs: [Song]
 }

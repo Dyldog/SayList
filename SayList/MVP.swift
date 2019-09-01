@@ -15,3 +15,7 @@ protocol Display {
 protocol Presenter {
     func viewDidAppear()
 }
+
+protocol ListPresenter: Presenter {
+    func didSelectRow(at indexPath: IndexPath)
+}

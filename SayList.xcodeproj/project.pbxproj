@@ -23,6 +23,10 @@
 		FCD06618231B8A1C00947C62 /* MVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06617231B8A1C00947C62 /* MVP.swift */; };
 		FCD0661A231B8A4200947C62 /* SpotifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06619231B8A4200947C62 /* SpotifyClient.swift */; };
 		FCD0661C231B94A300947C62 /* PlaylistListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0661B231B94A300947C62 /* PlaylistListPresenter.swift */; };
+		FCD06620231B99E700947C62 /* PlaylistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0661F231B99E700947C62 /* PlaylistDetailViewController.swift */; };
+		FCD06622231B9A6700947C62 /* PlaylistDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06621231B9A6700947C62 /* PlaylistDetailPresenter.swift */; };
+		FCD06624231B9BE300947C62 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06623231B9BE300947C62 /* LoginViewController.swift */; };
+		FCD06626231BA1E600947C62 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06625231BA1E600947C62 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +60,10 @@
 		FCD06617231B8A1C00947C62 /* MVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVP.swift; sourceTree = "<group>"; };
 		FCD06619231B8A4200947C62 /* SpotifyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyClient.swift; sourceTree = "<group>"; };
 		FCD0661B231B94A300947C62 /* PlaylistListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListPresenter.swift; sourceTree = "<group>"; };
+		FCD0661F231B99E700947C62 /* PlaylistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewController.swift; sourceTree = "<group>"; };
+		FCD06621231B9A6700947C62 /* PlaylistDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailPresenter.swift; sourceTree = "<group>"; };
+		FCD06623231B9BE300947C62 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FCD06625231BA1E600947C62 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,16 +99,18 @@
 			isa = PBXGroup;
 			children = (
 				FCD065F3231B77A100947C62 /* AppDelegate.swift */,
-				FCD0661B231B94A300947C62 /* PlaylistListPresenter.swift */,
-				FCD065F5231B77A100947C62 /* PlaylistListViewController.swift */,
+				FCD06623231B9BE300947C62 /* LoginViewController.swift */,
+				FCD0661D231B99BB00947C62 /* Playlist List */,
+				FCD0661E231B99CB00947C62 /* Playlist Detail */,
 				FCD0660C231B82CE00947C62 /* OAuthManager.swift */,
 				FCD06619231B8A4200947C62 /* SpotifyClient.swift */,
-				FCD06617231B8A1C00947C62 /* MVP.swift */,
 				FCD0660E231B85DC00947C62 /* Extensions */,
 				FCD065F7231B77A100947C62 /* Main.storyboard */,
 				FCD065FA231B77A200947C62 /* Assets.xcassets */,
 				FCD065FC231B77A200947C62 /* LaunchScreen.storyboard */,
 				FCD065FF231B77A200947C62 /* Info.plist */,
+				FCD06617231B8A1C00947C62 /* MVP.swift */,
+				FCD06625231BA1E600947C62 /* ListViewController.swift */,
 				FCD06605231B77B100947C62 /* Model.swift */,
 			);
 			path = SayList;
@@ -123,6 +133,24 @@
 				FCD06615231B863600947C62 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCD0661D231B99BB00947C62 /* Playlist List */ = {
+			isa = PBXGroup;
+			children = (
+				FCD0661B231B94A300947C62 /* PlaylistListPresenter.swift */,
+				FCD065F5231B77A100947C62 /* PlaylistListViewController.swift */,
+			);
+			path = "Playlist List";
+			sourceTree = "<group>";
+		};
+		FCD0661E231B99CB00947C62 /* Playlist Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FCD0661F231B99E700947C62 /* PlaylistDetailViewController.swift */,
+				FCD06621231B9A6700947C62 /* PlaylistDetailPresenter.swift */,
+			);
+			path = "Playlist Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,15 +225,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD06624231B9BE300947C62 /* LoginViewController.swift in Sources */,
 				FCD06612231B860200947C62 /* UIView+Extensions.swift in Sources */,
 				FCD06610231B85E900947C62 /* UITableView+Extensions.swift in Sources */,
 				FCD06606231B77B100947C62 /* Model.swift in Sources */,
 				FCD0661A231B8A4200947C62 /* SpotifyClient.swift in Sources */,
 				FCD0661C231B94A300947C62 /* PlaylistListPresenter.swift in Sources */,
+				FCD06622231B9A6700947C62 /* PlaylistDetailPresenter.swift in Sources */,
 				FCD06614231B861900947C62 /* UIAlertController+Extensions.swift in Sources */,
+				FCD06626231BA1E600947C62 /* ListViewController.swift in Sources */,
 				FCD06616231B863600947C62 /* UIViewController+Extensions.swift in Sources */,
 				FCD0660D231B82CE00947C62 /* OAuthManager.swift in Sources */,
 				FCD065F6231B77A100947C62 /* PlaylistListViewController.swift in Sources */,
+				FCD06620231B99E700947C62 /* PlaylistDetailViewController.swift in Sources */,
 				FCD06618231B8A1C00947C62 /* MVP.swift in Sources */,
 				FCD065F4231B77A100947C62 /* AppDelegate.swift in Sources */,
 			);

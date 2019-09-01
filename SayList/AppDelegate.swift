@@ -9,12 +9,66 @@
 import UIKit
 import OAuthSwift
 
+class SayListCoordinator {
+    var navigationController: UINavigationController!
+    var oauthToken: String!
+    
+    func start(in navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        
+        let loginViewController = LoginViewController(scopes: "playlist-read-collaborative")
+        navigationController.viewControllers = [loginViewController]
+        loginViewController.login { token in
+            self.oauthToken = token
+            self.startPostLogin()
+        }
+    }
+    
+    private func startPostLogin() {
+        let viewController = initialisePlaylistListViewController(onSelection: { playlist in
+            let detailViewController = self.initialisePlaylistDetailViewController(playlist)
+            self.navigationController.pushViewController(detailViewController, animated: true)
+        })
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    private func newSpotifyClient() -> SpotifyClient {
+        return SpotifyClient(token: oauthToken)
+    }
+    
+    private func initialisePlaylistListViewController(onSelection: @escaping (Playlist) -> Void) -> UIViewController {
+        let viewController = PlaylistListViewController()
+        let presenter = PlayListListPresenter(
+            spotify: newSpotifyClient(),
+            display: viewController,
+            onSelection: onSelection
+        )
+        viewController.presenter = presenter
+        return viewController
+    }
+    
+    private func initialisePlaylistDetailViewController(_ playlist: Playlist) -> UIViewController {
+        let detailViewController = PlaylistDetailViewController()
+        let detailPresenter = PlaylistDetailPresenter(spotify: newSpotifyClient(), playlist: playlist, display: detailViewController)
+        detailViewController.presenter = detailPresenter
+        return detailViewController
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let coordinator = SayListCoordinator()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationController = UINavigationController()
+        coordinator.start(in: navigationController)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        self.window = window
         
         return true
     }
