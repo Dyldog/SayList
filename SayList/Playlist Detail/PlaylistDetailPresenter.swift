@@ -16,14 +16,16 @@ class PlaylistDetailPresenter: ListPresenter {
     let display: PlaylistDetailDisplay
     var playlist: Playlist
     let spotify: SpotifyClient
+    let onSelection: (Song) -> Void
     
-    init(spotify: SpotifyClient, playlist: Playlist, display: PlaylistDetailDisplay) {
+    init(spotify: SpotifyClient, playlist: Playlist, display: PlaylistDetailDisplay, onSelection: @escaping (Song) -> Void) {
         self.spotify = spotify
         self.playlist = playlist
         self.display = display
+        self.onSelection = onSelection
     }
     
-    func viewDidAppear() {
+    func displayWillShow() {
         getSongs {
             self.refreshDisplay()
         }
@@ -43,7 +45,10 @@ class PlaylistDetailPresenter: ListPresenter {
     
     private func refreshDisplay() {
         let cellModels = playlist.songs.map {
-            return SimpleCellModel(title: $0.title, subtitle: nil)
+            return SimpleCellModel(
+                title: $0.title,
+                subtitle: $0.artists.map { $0.name }.joined(separator: ", ")
+            )
         }
         
         let viewModel = PlaylistDetailViewModel(cellModels: cellModels)
@@ -52,6 +57,6 @@ class PlaylistDetailPresenter: ListPresenter {
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        
+        onSelection(playlist.songs[indexPath.row])
     }
 }

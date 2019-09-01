@@ -25,10 +25,7 @@ class SayListCoordinator {
     }
     
     private func startPostLogin() {
-        let viewController = initialisePlaylistListViewController(onSelection: { playlist in
-            let detailViewController = self.initialisePlaylistDetailViewController(playlist)
-            self.navigationController.pushViewController(detailViewController, animated: true)
-        })
+        let viewController = initialisePlaylistListViewController()
         navigationController.pushViewController(viewController, animated: true)
     }
     
@@ -36,12 +33,15 @@ class SayListCoordinator {
         return SpotifyClient(token: oauthToken)
     }
     
-    private func initialisePlaylistListViewController(onSelection: @escaping (Playlist) -> Void) -> UIViewController {
+    private func initialisePlaylistListViewController() -> UIViewController {
         let viewController = PlaylistListViewController()
         let presenter = PlayListListPresenter(
             spotify: newSpotifyClient(),
             display: viewController,
-            onSelection: onSelection
+            onSelection: { playlist in
+                let detailViewController = self.initialisePlaylistDetailViewController(playlist)
+                self.navigationController.pushViewController(detailViewController, animated: true)
+            }
         )
         viewController.presenter = presenter
         return viewController
@@ -49,7 +49,17 @@ class SayListCoordinator {
     
     private func initialisePlaylistDetailViewController(_ playlist: Playlist) -> UIViewController {
         let detailViewController = PlaylistDetailViewController()
-        let detailPresenter = PlaylistDetailPresenter(spotify: newSpotifyClient(), playlist: playlist, display: detailViewController)
+        let detailPresenter = PlaylistDetailPresenter(spotify: newSpotifyClient(), playlist: playlist, display: detailViewController, onSelection: { song in
+            let songDetailViewController = self.initialiseSongDetailViewController(song)
+            self.navigationController.pushViewController(songDetailViewController, animated: true)
+        })
+        detailViewController.presenter = detailPresenter
+        return detailViewController
+    }
+    
+    private func initialiseSongDetailViewController(_ song: Song) -> UIViewController {
+        let detailViewController = SongDetailViewController()
+        let detailPresenter = SongDetailPresenter(song: song, display: detailViewController)
         detailViewController.presenter = detailPresenter
         return detailViewController
     }

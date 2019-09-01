@@ -234,6 +234,29 @@ struct SAPIOwner: Codable {
     }
 }
 
+// MARK: - SAPIOwner
+struct SAPIArtist: Codable {
+    let name: String
+    let externalUrls: SAPIExternalUrls
+    let href: String
+    let id: String
+    let uri: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case externalUrls = "external_urls"
+        case href = "href"
+        case id = "id"
+        case uri = "uri"
+    }
+}
+
+extension SAPIArtist: DomainMappable {
+    func asDomainType() -> Artist {
+        return Artist(id: self.id, name: self.name)
+    }
+}
+
 protocol DomainMappable {
     associatedtype DomainType
     func asDomainType() -> DomainType
@@ -256,7 +279,7 @@ struct SAPITrackItem: Codable {
 
 extension SAPITrack: DomainMappable {
     func asDomainType() -> Song {
-        return Song(id: self.id, title: self.name)
+        return Song(id: self.id, title: self.name, artists: self.artists.asDomainType(), album: album.asDomainType())
     }
 }
 
@@ -269,7 +292,7 @@ extension SAPITrackItem: DomainMappable {
 // MARK: - SAPITrack
 struct SAPITrack: Codable {
     let album: SAPIAlbum
-    let artists: [SAPIOwner]
+    let artists: [SAPIArtist]
     let availableMarkets: [String]
     let discNumber: Int
     let durationMS: Int
@@ -309,7 +332,7 @@ struct SAPITrack: Codable {
 
 // MARK: - SAPIAlbum
 struct SAPIAlbum: Codable {
-    let artists: [SAPIOwner]
+    let artists: [SAPIArtist]
     let availableMarkets: [String]
     let externalUrls: SAPIExternalUrls
     let href: String
@@ -331,5 +354,25 @@ struct SAPIAlbum: Codable {
         case releaseDate = "release_date"
         case totalTracks = "total_tracks"
         case uri = "uri"
+    }
+}
+
+extension SAPIAlbum: DomainMappable {
+    func asDomainType() -> Album {
+        return Album(
+            id: self.id, name: self.name,
+            artists: self.artists.asDomainType(),
+            imageURL: (images.max { $0.width < $1.width }?.url).lift({ URL(string: $0) }) ?? nil
+        )
+    }
+}
+
+extension Optional {
+    func lift<OUT>(_ work: (Wrapped) -> OUT) -> OUT? {
+        if let self = self {
+            return work(self)
+        } else {
+            return nil
+        }
     }
 }

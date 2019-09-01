@@ -1,0 +1,21 @@
+PODS:
+  - MessengerKit (1.0.4)
+
+DEPENDENCIES:
+  - MessengerKit (from `https://github.com/steve228uk/MessengerKit.git`)
+
+EXTERNAL SOURCES:
+  MessengerKit:
+    :git: https://github.com/steve228uk/MessengerKit.git
+
+CHECKOUT OPTIONS:
+  MessengerKit:
+    :commit: 6917ef22129d0e9cae417b796509158505eac4d1
+    :git: https://github.com/steve228uk/MessengerKit.git
+
+SPEC CHECKSUMS:
+  MessengerKit: 41a5742a03e3f9638cb3b4ae310f69161ac1e659
+
+PODFILE CHECKSUM: ef9a39e3030cc90f44abeaa681064b9bf565b7b0
+
+COCOAPODS: 1.7.5

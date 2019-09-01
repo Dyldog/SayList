@@ -74,11 +74,12 @@ class ListTableViewController<ViewModel, Presenter>: UIViewController, Display, 
         tableView.embed(in: self.view)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        presenter?.displayWillShow()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter?.viewDidAppear()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -19,4 +19,14 @@ extension UIView {
             parentView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
+    
+    func stickToTop(in parentView: UIView) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        parentView.addSubview(self)
+        NSLayoutConstraint.activate([
+            parentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            parentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            parentView.topAnchor.constraint(equalTo: topAnchor),
+        ])
+    }
 }

@@ -26,7 +26,7 @@ class PlayListListPresenter: ListPresenter {
         self.onSelection = onSelection
     }
     
-    func viewDidAppear() {
+    func displayWillShow() {
         self.getPlaylists() {
             self.refreshDisplay()
         }

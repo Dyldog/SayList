@@ -13,7 +13,7 @@ protocol Display {
 }
 
 protocol Presenter {
-    func viewDidAppear()
+    func displayWillShow()
 }
 
 protocol ListPresenter: Presenter {

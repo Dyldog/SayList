@@ -21,13 +21,15 @@ struct Artist {
 struct Album {
     let id: String
     let name: String
-    let artist: Artist
-    let songs: [Song]
+    let artists: [Artist]
+    let imageURL: URL?
 }
 
 struct Song {
     let id: String
     let title: String
+    let artists: [Artist]
+    let album: Album
 }
 
 struct Playlist {
