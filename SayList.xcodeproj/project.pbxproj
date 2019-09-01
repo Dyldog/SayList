@@ -8,20 +8,54 @@
 
 /* Begin PBXBuildFile section */
 		FCD065F4231B77A100947C62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD065F3231B77A100947C62 /* AppDelegate.swift */; };
-		FCD065F6231B77A100947C62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD065F5231B77A100947C62 /* ViewController.swift */; };
+		FCD065F6231B77A100947C62 /* PlaylistListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD065F5231B77A100947C62 /* PlaylistListViewController.swift */; };
 		FCD065F9231B77A100947C62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD065F7231B77A100947C62 /* Main.storyboard */; };
 		FCD065FB231B77A200947C62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCD065FA231B77A200947C62 /* Assets.xcassets */; };
 		FCD065FE231B77A200947C62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCD065FC231B77A200947C62 /* LaunchScreen.storyboard */; };
+		FCD06606231B77B100947C62 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06605231B77B100947C62 /* Model.swift */; };
+		FCD06609231B7B5A00947C62 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCD06608231B7B5A00947C62 /* OAuthSwift.framework */; };
+		FCD0660B231B7B6600947C62 /* OAuthSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCD06608231B7B5A00947C62 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FCD0660D231B82CE00947C62 /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0660C231B82CE00947C62 /* OAuthManager.swift */; };
+		FCD06610231B85E900947C62 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0660F231B85E900947C62 /* UITableView+Extensions.swift */; };
+		FCD06612231B860200947C62 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06611231B860200947C62 /* UIView+Extensions.swift */; };
+		FCD06614231B861900947C62 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06613231B861900947C62 /* UIAlertController+Extensions.swift */; };
+		FCD06616231B863600947C62 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06615231B863600947C62 /* UIViewController+Extensions.swift */; };
+		FCD06618231B8A1C00947C62 /* MVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06617231B8A1C00947C62 /* MVP.swift */; };
+		FCD0661A231B8A4200947C62 /* SpotifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06619231B8A4200947C62 /* SpotifyClient.swift */; };
+		FCD0661C231B94A300947C62 /* PlaylistListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0661B231B94A300947C62 /* PlaylistListPresenter.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FCD0660A231B7B6000947C62 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FCD0660B231B7B6600947C62 /* OAuthSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FCD065F0231B77A100947C62 /* SayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCD065F3231B77A100947C62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FCD065F5231B77A100947C62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FCD065F5231B77A100947C62 /* PlaylistListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListViewController.swift; sourceTree = "<group>"; };
 		FCD065F8231B77A100947C62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCD065FA231B77A200947C62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCD065FD231B77A200947C62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCD065FF231B77A200947C62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCD06605231B77B100947C62 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		FCD06608231B7B5A00947C62 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
+		FCD0660C231B82CE00947C62 /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
+		FCD0660F231B85E900947C62 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		FCD06611231B860200947C62 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		FCD06613231B861900947C62 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		FCD06615231B863600947C62 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FCD06617231B8A1C00947C62 /* MVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVP.swift; sourceTree = "<group>"; };
+		FCD06619231B8A4200947C62 /* SpotifyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyClient.swift; sourceTree = "<group>"; };
+		FCD0661B231B94A300947C62 /* PlaylistListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCD06609231B7B5A00947C62 /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +75,7 @@
 			children = (
 				FCD065F2231B77A100947C62 /* SayList */,
 				FCD065F1231B77A100947C62 /* Products */,
+				FCD06607231B7B5A00947C62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +91,38 @@
 			isa = PBXGroup;
 			children = (
 				FCD065F3231B77A100947C62 /* AppDelegate.swift */,
-				FCD065F5231B77A100947C62 /* ViewController.swift */,
+				FCD0661B231B94A300947C62 /* PlaylistListPresenter.swift */,
+				FCD065F5231B77A100947C62 /* PlaylistListViewController.swift */,
+				FCD0660C231B82CE00947C62 /* OAuthManager.swift */,
+				FCD06619231B8A4200947C62 /* SpotifyClient.swift */,
+				FCD06617231B8A1C00947C62 /* MVP.swift */,
+				FCD0660E231B85DC00947C62 /* Extensions */,
 				FCD065F7231B77A100947C62 /* Main.storyboard */,
 				FCD065FA231B77A200947C62 /* Assets.xcassets */,
 				FCD065FC231B77A200947C62 /* LaunchScreen.storyboard */,
 				FCD065FF231B77A200947C62 /* Info.plist */,
+				FCD06605231B77B100947C62 /* Model.swift */,
 			);
 			path = SayList;
+			sourceTree = "<group>";
+		};
+		FCD06607231B7B5A00947C62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCD06608231B7B5A00947C62 /* OAuthSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCD0660E231B85DC00947C62 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCD0660F231B85E900947C62 /* UITableView+Extensions.swift */,
+				FCD06611231B860200947C62 /* UIView+Extensions.swift */,
+				FCD06613231B861900947C62 /* UIAlertController+Extensions.swift */,
+				FCD06615231B863600947C62 /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +132,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FCD06602231B77A200947C62 /* Build configuration list for PBXNativeTarget "SayList" */;
 			buildPhases = (
+				FCD0660A231B7B6000947C62 /* CopyFiles */,
 				FCD065EC231B77A100947C62 /* Sources */,
 				FCD065ED231B77A100947C62 /* Frameworks */,
 				FCD065EE231B77A100947C62 /* Resources */,
@@ -135,7 +197,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCD065F6231B77A100947C62 /* ViewController.swift in Sources */,
+				FCD06612231B860200947C62 /* UIView+Extensions.swift in Sources */,
+				FCD06610231B85E900947C62 /* UITableView+Extensions.swift in Sources */,
+				FCD06606231B77B100947C62 /* Model.swift in Sources */,
+				FCD0661A231B8A4200947C62 /* SpotifyClient.swift in Sources */,
+				FCD0661C231B94A300947C62 /* PlaylistListPresenter.swift in Sources */,
+				FCD06614231B861900947C62 /* UIAlertController+Extensions.swift in Sources */,
+				FCD06616231B863600947C62 /* UIViewController+Extensions.swift in Sources */,
+				FCD0660D231B82CE00947C62 /* OAuthManager.swift in Sources */,
+				FCD065F6231B77A100947C62 /* PlaylistListViewController.swift in Sources */,
+				FCD06618231B8A1C00947C62 /* MVP.swift in Sources */,
 				FCD065F4231B77A100947C62 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +354,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SayList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +375,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SayList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
