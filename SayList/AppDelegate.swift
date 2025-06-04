@@ -25,41 +25,60 @@ class SayListCoordinator {
     }
     
     private func startPostLogin() {
-        let viewController = initialisePlaylistListViewController()
-        navigationController.pushViewController(viewController, animated: true)
+        showPlaylistListViewController(onSelection: { playlist in
+            self.showPlaylistDetailViewController(playlist, onSelection: { song in
+                let vc = self.initialiseSongDetailViewController(song, playlistID: playlist.id)
+                self.navigationController.pushViewController(vc, animated: true)
+            })
+        })
     }
     
     private func newSpotifyClient() -> SpotifyClient {
         return SpotifyClient(token: oauthToken)
     }
     
-    private func initialisePlaylistListViewController() -> UIViewController {
+    private func newMessageClient() -> MessageClient {
+        return MessageClient()
+    }
+    
+    // MARK: - Playlist List
+    
+    private func initialisePlaylistListViewController(onSelection: @escaping (Playlist) -> Void) -> UIViewController {
         let viewController = PlaylistListViewController()
         let presenter = PlayListListPresenter(
             spotify: newSpotifyClient(),
             display: viewController,
-            onSelection: { playlist in
-                let detailViewController = self.initialisePlaylistDetailViewController(playlist)
-                self.navigationController.pushViewController(detailViewController, animated: true)
-            }
+            onSelection: onSelection
         )
         viewController.presenter = presenter
         return viewController
     }
     
-    private func initialisePlaylistDetailViewController(_ playlist: Playlist) -> UIViewController {
+    private func showPlaylistListViewController(onSelection: @escaping (Playlist) -> Void) {
+        let vc = initialisePlaylistListViewController(onSelection: onSelection)
+        self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - Song List
+    
+    private func initialisePlaylistDetailViewController(_ playlist: Playlist, onSelection: @escaping (Song) -> Void) -> UIViewController {
         let detailViewController = PlaylistDetailViewController()
-        let detailPresenter = PlaylistDetailPresenter(spotify: newSpotifyClient(), playlist: playlist, display: detailViewController, onSelection: { song in
-            let songDetailViewController = self.initialiseSongDetailViewController(song)
-            self.navigationController.pushViewController(songDetailViewController, animated: true)
-        })
+        let detailPresenter = PlaylistDetailPresenter(spotify: newSpotifyClient(), playlist: playlist, display: detailViewController, onSelection: onSelection
+        )
         detailViewController.presenter = detailPresenter
         return detailViewController
     }
     
-    private func initialiseSongDetailViewController(_ song: Song) -> UIViewController {
+    private func showPlaylistDetailViewController(_ playlist: Playlist, onSelection: @escaping (Song) -> Void) {
+        let vc = initialisePlaylistDetailViewController(playlist, onSelection: onSelection)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    // Song Detail
+    
+    private func initialiseSongDetailViewController(_ song: Song, playlistID: String) -> UIViewController {
         let detailViewController = SongDetailViewController()
-        let detailPresenter = SongDetailPresenter(song: song, display: detailViewController)
+        let detailPresenter = SongDetailPresenter(song: song, playlistID: playlistID, display: detailViewController, messageClient: newMessageClient())
         detailViewController.presenter = detailPresenter
         return detailViewController
     }

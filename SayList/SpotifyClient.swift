@@ -79,14 +79,6 @@ class SpotifyClient {
     }
     
     func getPlaylistSongs(for id: String, completion: @escaping (Result<Playlist, Swift.Error>) -> Void) {
-//        getResource(at: URL(string: <#T##String#>),
-//                    ofType: <#T##(DomainMappable & Decodable).Protocol#>,
-//                    completion: <#T##(Result<[DomainMappable & Decodable.DomainType], Error>) -> Void#>
-//        )
-//        string(at: URL(string: "https://api.spotify.com/v1/playlists/\(id)")!) {
-//            print($0)
-//        }
-        
         getResource(at: URL(string: "https://api.spotify.com/v1/playlists/\(id)")!, ofType: SAPILoadedPlaylist.self, completion: completion)
     }
 }

@@ -34,6 +34,7 @@
 		FCD06631231BDE0800947C62 /* SongDetailHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD06630231BDE0800947C62 /* SongDetailHeaderCollectionViewCell.xib */; };
 		FCD06633231BDF9400947C62 /* SongDetailViewController+HeaderFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06632231BDF9400947C62 /* SongDetailViewController+HeaderFix.swift */; };
 		FCD06635231BE04300947C62 /* SongDetailHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06634231BE04300947C62 /* SongDetailHeaderCollectionViewCell.swift */; };
+		FCD06639231C036700947C62 /* MessageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD06638231C036700947C62 /* MessageClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +81,7 @@
 		FCD06630231BDE0800947C62 /* SongDetailHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongDetailHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		FCD06632231BDF9400947C62 /* SongDetailViewController+HeaderFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SongDetailViewController+HeaderFix.swift"; sourceTree = "<group>"; };
 		FCD06634231BE04300947C62 /* SongDetailHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCD06638231C036700947C62 /* MessageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				FCD0660C231B82CE00947C62 /* OAuthManager.swift */,
 				FCD06627231BC29D00947C62 /* Song Detail */,
 				FCD06619231B8A4200947C62 /* SpotifyClient.swift */,
+				FCD06638231C036700947C62 /* MessageClient.swift */,
 				FCD0660E231B85DC00947C62 /* Extensions */,
 				FCD065F7231B77A100947C62 /* Main.storyboard */,
 				FCD065FA231B77A200947C62 /* Assets.xcassets */,
@@ -343,6 +346,7 @@
 				FCD06626231BA1E600947C62 /* ListViewController.swift in Sources */,
 				FCD06616231B863600947C62 /* UIViewController+Extensions.swift in Sources */,
 				FCD0660D231B82CE00947C62 /* OAuthManager.swift in Sources */,
+				FCD06639231C036700947C62 /* MessageClient.swift in Sources */,
 				FCD06635231BE04300947C62 /* SongDetailHeaderCollectionViewCell.swift in Sources */,
 				FCD065F6231B77A100947C62 /* PlaylistListViewController.swift in Sources */,
 				FCD06620231B99E700947C62 /* PlaylistDetailViewController.swift in Sources */,

@@ -13,7 +13,7 @@ protocol Display {
 }
 
 protocol Presenter {
-    func displayWillShow()
+    mutating func displayWillShow()
 }
 
 protocol ListPresenter: Presenter {

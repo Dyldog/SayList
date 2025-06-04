@@ -7,33 +7,39 @@
 //
 
 import UIKit
+import MessengerKit
 
 protocol SongDetailDisplay: Display {
     func setViewModel(_ viewModel: SongDetailViewModel)
 }
 
 struct SongDetailPresenter: Presenter {
+    
     let song: Song
+    let playlistID: String
     let display: SongDetailDisplay
+    let messageClient: MessageClient
     
-    private var messages: [[MSGMessage]] = {
-        let steve = ChatUser(displayName: "Steve", avatar: nil, avatarURL: nil, isSender: true)
-        let tim = ChatUser(displayName: "Tim", avatar: nil, avatarURL: nil, isSender: false)
-        
-        return [
-            [MSGMessage(id: 1, body: .emoji("🐙💦🔫"), user: tim, sentAt: Date()),],
-            [MSGMessage(id: 2, body: .text("Yeah sure, gimme 5"), user: steve, sentAt: Date()),
-             MSGMessage(id: 3, body: .text("Okay ready when you are"), user: steve, sentAt: Date())]
-        ]
-    }()
+    private var messages: [[MSGMessage]]
     
-    init(song: Song, display: SongDetailDisplay) {
+    init(song: Song, playlistID: String, display: SongDetailDisplay, messageClient: MessageClient) {
         self.song = song
+        self.playlistID = playlistID
         self.display = display
+        self.messageClient = messageClient
+        self.messages = []
     }
     
-    func displayWillShow() {
-        refreshDisplay()
+    mutating func displayWillShow() {
+        messageClient.getMessages(for: song.id, in: playlistID) { messages in
+            let mappedMessages = messages.enumerated().map {
+                return $0.element.asMSGMessage(withID: $0.offset)
+            }
+            if mappedMessages.count > 0 {
+                self.messages = [mappedMessages]
+            }
+            refreshDisplay()
+        }
     }
     
     private func refreshDisplay() {
@@ -49,6 +55,30 @@ struct SongDetailPresenter: Presenter {
         }, title: song.title, subtitle: song.artists.map { $0.name }.joined(separator: ", "), messages: messages)
         
         display.setViewModel(viewModel)
+    }
+    
+    func userDidEnterMessage(_ text: String) {
+        
+    }
+}
+
+extension Message {
+    func asMSGMessage(withID id: Int) -> MSGMessage {
+        return MSGMessage(
+            id: id,
+            body: .text(content),
+            user: user,
+            sentAt: sentAt
+        )
+    }
+}
+
+extension User: MSGUser {
+    var displayName: String { return name }
+    var isSender: Bool { return isMe }
+    var avatar: UIImage? {
+        get { return nil }
+        set(newValue) {}
     }
 }
 
@@ -68,14 +98,6 @@ struct SongDetailViewModel {
     }
 }
 
-import MessengerKit
-
-struct ChatUser: MSGUser {
-    let displayName: String
-    var avatar: UIImage?
-    let avatarURL: URL?
-    let isSender: Bool
-}
 
 class SongDetailViewController: MSGMessengerViewController, SongDetailDisplay {
     var presenter: SongDetailPresenter!
@@ -112,6 +134,11 @@ class SongDetailViewController: MSGMessengerViewController, SongDetailDisplay {
                 cell.imageView.image = image
             }
         })
+    }
+    
+    override func inputViewPrimaryActionTriggered(inputView: MSGInputView) {
+        let messageText = inputView.textView!.text!
+        presenter.userDidEnterMessage(messageText)
     }
 }
 
